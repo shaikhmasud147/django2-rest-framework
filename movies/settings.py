@@ -25,7 +25,7 @@ SECRET_KEY = '-v&^n=ry5q=s%q5j@l0^4sk5(f+(30p4@(dxxjc&__e!b4=ekk'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["movie-rating-django.herokuapp.com"]
+ALLOWED_HOSTS = ["movie-rating-django.herokuapp.com", 'localhost', '127.0.0.1']
 
 
 # Application definition
