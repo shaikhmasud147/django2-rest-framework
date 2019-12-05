@@ -106,6 +106,7 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:4200",
+    "https://movie-rating-angular.herokuapp.com",
 ]
 
 # Password validation
