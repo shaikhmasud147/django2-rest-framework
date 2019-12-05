@@ -22,6 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '-v&^n=ry5q=s%q5j@l0^4sk5(f+(30p4@(dxxjc&__e!b4=ekk'
 
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config()
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -86,6 +90,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_AUTHENTICATION_CLASSES': [
