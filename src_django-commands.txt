@@ -1,0 +1,100 @@
+# Django Basic Commands
+0. pip freeze
+1. pip install django
+2. python manage.py runserver
+3. python manage.py start app APPNAME
+4. python manage.py makemigrations
+5. python manage.py migrate
+6. python manage.py collectstatic
+
+# Use Python 3 for easy unicode
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
+$ pip install django
+$ deactivate
+
+# Start new django project and app
+$ django-admin.py startproject mysite
+$ ./manage.py migrate
+$ ./manage.py createsuperuser
+$ ./manage.py startapp myapp
+
+# Run jango
+$ ./manage.py shell
+$ ./manage.py runserver
+
+# django migration
+$ ./manage.py makemigrations myapp
+$ ./manage.py sqlmigrate myapp 0001
+$ ./manage.py migrate
+$ ./manage.py squashmigrations myapp 0004
+
+# django database backup & restore
+$ ./manage.py dumpdata --indent 2 --exclude auth.permission --exclude contenttypes > db.json
+$ ./manage.py loaddata db.json
+
+# sqlite3
+$ sqlite3 db.sqlite3
+sqlite> .tables
+
+# test
+from django.test.utils import setup_test_environment
+setup_test_environment()
+$ python manage.py test myapp
+
+# Distribution
+$ python setup.py sdist
+$ pip install django-package-0.1.tar.gz
+
+# Backup Django Database
+
+dumpdata command
+It is a django management command, which can be use to backup(export) you model instances or whole database
+dumpdata for basic database dump
+Following command will dump whole database in to a db.json file
+
+./manage.py dumpdata > db.json
+
+dumpdata for backup specific app
+Following command will dump the content in django admin app into admin.json file
+
+./manage.py dumpdata admin > admin.json
+
+dumpdata for backup specific table
+Following command will dump only the content in django admin.logentry table
+
+./manage.py dumpdata admin.logentry > logentry.json
+
+Following command will dump the content in django auth.user table
+
+./manage.py dumpdata auth.user > user.json dumpdata (--exclude)
+
+You can use --exclude option to specify apps/tables which don't need being dumped
+
+Following command will dump the whole database with out including auth.permission table content
+
+./manage.py dumpdata --exclude auth.permission > db.json dumpdata (--indent)
+
+By default, dumpdata will output all data on a single line. It isn’t easy for humans to read
+
+You can use the --indent option to pretty-print the output with a number of indentation spaces
+
+./manage.py dumpdata auth.user --indent 2 > user.json
+
+# Migrate Database
+
+1. Remove the all migrations files within your project
+Go through each of your projects apps migration folder and remove everything inside, except the __init__.py file.
+
+Or if you are using a unix-like OS you can run the following script (inside your project dir):
+
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
+
+2. Drop the current database, or delete the db.sqlite3 if it is your case.
+
+3. Create the initial migrations and generate the database schema:
+
+python manage.py makemigrations
+python manage.py migrate
+And you are good to go.
