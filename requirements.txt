@@ -6,7 +6,7 @@ django-import-export==1.2.0
 django-mysql==3.2.0
 django-storages==1.7.2
 django-cors-headers==3.2.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 gunicorn==20.0.4
 pytz==2019.3
 urllib3==1.25.7
